@@ -3,7 +3,7 @@ class ApiError extends Error{
         statusCode=500,
         message="Internal Server Error",
         errors=[],
-        statck=""
+        stack=""
     ){
         super(message);
         this.statusCode = statusCode;
@@ -15,7 +15,7 @@ class ApiError extends Error{
 
 
         if(stack){
-            this.stack= statck
+            this.stack= stack
         }else{
             Error.captureStackTrace(this,this.constructor)
         }
