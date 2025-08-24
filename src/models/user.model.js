@@ -33,13 +33,13 @@ const userSchema = new Schema({
         required: true
 
     },
-    coverImange: {
+    coverImage: {
         type: String,
 
     },
     password: {
         type: String,
-        requird:[ true,"Password is required"],
+        required:[ true,"Password is required"],
        
     },
     refreshToken: {
@@ -76,7 +76,7 @@ userSchema.methods.generateAccessToken = function(){
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY || "1d"  //default expiry is 1 day
     })
 }
-userSchema.methods.generaterefreshToken = function(){
+userSchema.methods.generateRefreshToken = function(){
     return jwt.sign({
         _id :this._id,
         username: this.username,
