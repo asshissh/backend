@@ -148,7 +148,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(
         req.user._id, {
         $set: {
-            refreshToken: undefined
+            refreshToken: null
         }
     }, {
         new: true
@@ -159,7 +159,6 @@ const logoutUser = asyncHandler(async (req, res) => {
         secure: true
     }
 
-    // ✅ Correct version
     return res.status(200)
         .clearCookie("accessToken", options)
         .clearCookie("refreshToken", options)
